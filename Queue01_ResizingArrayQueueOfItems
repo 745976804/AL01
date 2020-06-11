@@ -1,0 +1,33 @@
+//用数组模仿队列（先进先出），但是用数组每次插入元素都要调整位置，比较耗时。
+//增加了泛型和调整数组的方法。
+class ResizingArrayQueueOfItems<Item>{
+     private Item[] str;
+     private int tail;
+     public ResizingArrayQueueOfItems(){
+         str = (Item[]) new Object[2];
+         tail = 0;
+     }
+
+     public void push(Item s){
+         if (tail >= str.length)
+             resize(2* str.length);
+         str[tail++] = s;
+     }
+
+     public Item pop(){
+         Item s = str[0];
+         for(int i = 0;i < str.length;i++){
+             str[i] = str[i++];
+         }
+         tail--;
+         return s;
+     }
+     //调整数组大小
+     private void resize(int  length){
+         Item[] temp = (Item[]) new Object[length];
+         for(int i = 0;i < str.length;i++){
+             temp[i] = str[i];
+         }
+         str = temp;
+     }
+}
