@@ -1,0 +1,28 @@
+class FixedCapacityStackOfString{
+    private String[] str;
+    private int n=0;
+    public FixedCapacityStackOfString(int cap){
+        str = new String[cap];
+    }
+
+    public void push(String item){
+        //first case:out of array
+        if (n>=str.length)
+            System.out.println("out of array");
+        //second case
+        else
+            str[n++] = item;
+    }
+
+    public boolean IsEmpty(){
+        return n==0;
+    }
+
+    public String pop(){
+        return str[--n];
+    }
+
+    public int length(){
+        return n;
+    }
+}
