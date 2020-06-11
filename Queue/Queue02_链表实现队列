@@ -1,0 +1,36 @@
+class Queue<Item>{
+    private Node first;
+    private Node last;
+    private int count;
+    private class Node<Item>{
+        Item item;
+        Node next;
+    }
+
+    public void push(Item item){
+        Node<Item> n = new Node<>();
+        n.item = item;
+        //插入第一个元素时，首尾节点为同一个
+        if (count == 0)
+            first = last = n;
+        last.next = n;
+        last = n;
+        count++;
+    }
+
+    public Item pop(){
+        count--;
+        Node n = first;
+        first = first.next;
+        return (Item)n.item;
+    }
+
+    public boolean IsEmpty()
+    {
+        return count==0;
+    }
+
+    public int size(){
+        return count;
+    }
+}
