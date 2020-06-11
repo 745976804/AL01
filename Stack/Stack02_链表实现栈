@@ -10,8 +10,7 @@ class Stack<Item>{
     public void push(Item item){
         Node<Item> n = new Node<>();
         n.item = item;
-        Node oldFirst;
-        oldFirst = first;
+        Node oldFirst = first;
         first = n;
         first.next = oldFirst;
         count++;
