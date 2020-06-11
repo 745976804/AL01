@@ -1,3 +1,4 @@
+//用数组模仿栈（先进后出）
 class FixedCapacityStackOfString{
     private String[] str;
     private int n=0;
