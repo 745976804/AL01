@@ -1,0 +1,39 @@
+public class Chapter1_3_4 {
+
+    public static boolean isVaild(String s){
+        Stack<Character> stack = new Stack<>();
+        int i;
+        for (i = 0;i < s.length();i++){
+            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{' ){
+                stack.push(s.charAt(i));
+            }
+
+            else if (s.charAt(i) == ')'){
+                if (stack.pop() != '('){
+                    break;
+                }
+            }
+            else if (s.charAt(i) == ']'){
+                if (stack.pop() != '['){
+                    break;
+                }
+            }
+
+            else if (s.charAt(i) == '}'){
+                if (stack.pop() != '{'){
+                    break;
+                }
+            }
+            else if (s.isEmpty()){
+                break;
+            }
+
+        }
+        return i==s.length();
+    }
+
+    public static void main(String[] args){
+        String s = "[(])";
+        System.out.println(isVaild(s));
+    }
+}
