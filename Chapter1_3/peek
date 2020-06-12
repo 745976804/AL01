@@ -1,0 +1,38 @@
+class Stack<Item>{
+    private Node first;
+    private int count;
+    private class Node<Item>{
+        Item item;
+        Node next;
+    }
+
+    //节点结构：域 + 链表
+    public void push(Item item){
+        Node<Item> n = new Node<>();
+        n.item = item;
+        Node oldFirst = first;
+        first = n;
+        first.next = oldFirst;
+        count++;
+    }
+
+    public Item pop(){
+        count--;
+        Node n = first;
+        first = first.next;
+        return (Item) n.item;
+    }
+
+    public Item peek(){
+        return (Item)first.item;
+    }
+
+    public boolean IsEmpty()
+    {
+        return count==0;
+    }
+
+    public int size(){
+        return count;
+    }
+}
