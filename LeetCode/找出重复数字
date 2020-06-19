@@ -6,7 +6,7 @@
 输出：2 或 3 
 */
 class Solution{
-    public int findRepeatNumber(int[] nums) {
+    public int findRepeatNumber01(int[] nums) {
         Map<Integer,Integer> map = new HashMap<Integer,Integer>();
         for(int i=0;i<nums.length;i++){
             if(map.containsKey(nums[i])){
@@ -24,5 +24,35 @@ class Solution{
             }
         }
         return 0;
+    }
+
+    public int findRepeatNumber02(int[] nums){
+        int[] aux = new int[nums.length];
+        for (int i=0;i<nums.length;i++){
+            aux[i]=0;
+        }
+        for (int i=0;i<nums.length;i++){
+            aux[nums[i]]++;
+        }
+        for (int i=0;i<nums.length;i++){
+            if (aux[i]>1)
+                return i;
+        }
+        return 0;
+    }
+
+    public int findRepeatNumber03(int[] nums){
+        int temp;
+        for(int i=0;i<nums.length;i++){
+            while (nums[i]!=i){
+                if(nums[i]==nums[nums[i]]){
+                    return nums[i];
+                }
+                temp=nums[i];
+                nums[i]=nums[temp];
+                nums[temp]=temp;
+            }
+        }
+        return -1;
     }
 }
